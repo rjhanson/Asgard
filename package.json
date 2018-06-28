@@ -1,0 +1,11 @@
+{
+  "name": "asgard",
+  "version": "1.0.0",
+  "description": "A simple homepage for Russell's website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Russell Hanson",
+  "license": "MIT"
+}
