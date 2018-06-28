@@ -4,8 +4,22 @@
   "description": "A simple homepage for Russell's website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "",
+    "build": "webpack -p"
   },
   "author": "Russell Hanson",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "webpack": "^4.12.2"
+  }
 }
