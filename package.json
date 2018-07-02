@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple homepage for Russell's website",
   "main": "index.js",
+  "repository": "https://github.com/rjhanson/Asgard.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --env.env=dev",
