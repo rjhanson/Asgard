@@ -14,6 +14,7 @@ Things to add:
 * Admin
 * SSL
 * OG / Twitter cards
+* Helmet (Header settings)
 
 ## Pages
 * Home
