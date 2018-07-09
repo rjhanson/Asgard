@@ -13,11 +13,16 @@
   "author": "Russell Hanson",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "forever": "^0.15.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "request": "^2.87.0",
     "semantic-ui-css": "^2.3.2",
-    "semantic-ui-react": "^0.81.3"
+    "semantic-ui-react": "^0.81.3",
+    "xhr": "^2.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.4",
