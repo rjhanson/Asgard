@@ -11,6 +11,13 @@ node_modules/
 .env
 .env.production
 
+# terraform
+infra/.terraform/
+infra/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+
 # macOS
 .DS_Store
 
