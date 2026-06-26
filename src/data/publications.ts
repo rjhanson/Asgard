@@ -57,7 +57,7 @@ export const publications: Publication[] = [
     title:
       'Insights from the Plan Blue 21 Game: Examining the Role of Sensing and Partner and Allied Contributions to Competition with Russia in the Arctic',
     authors:
-      'Elizabeth M. Bartels, David A. Ochmanek, Nathaniel Edenfield, Brien Alkire, et al. (incl. Russell Hanson)',
+      'Elizabeth M. Bartels, David A. Ochmanek, Nathaniel Edenfield, Brien Alkire, et al.',
     venue: 'RAND Corporation, Project AIR FORCE',
     year: 2023,
     type: 'report',
@@ -127,12 +127,15 @@ export const publications: Publication[] = [
     year: 2020,
     type: 'report',
     description:
-      'A four-part series introducing the CAT-V tool, which integrates epidemiological case data with commercial air-travel statistics to model COVID-19 transmission risk across global flight routes.',
+      'A seven-part series introducing the CAT-V tool, which integrates epidemiological case data with commercial air-travel statistics to model COVID-19 transmission risk across global flight routes.',
     links: [
-      { label: 'A New Tool for Analyzing Air Travel', url: 'https://doi.org/10.7249/RRA248-1' },
-      { label: '1.5+ Daily Infected Passengers from China', url: 'https://doi.org/10.7249/RRA248-2' },
-      { label: 'Cases ~37× Higher Than Reported', url: 'https://doi.org/10.7249/RRA248-3' },
-      { label: 'Transmission Risk to GCC Countries', url: 'https://doi.org/10.7249/RRA248-5' },
+      { label: 'A New Tool for Analyzing Air Travel', url: 'https://www.rand.org/pubs/research_reports/RRA248-1.html' },
+      { label: '1.5+ Daily Infected Passengers from China', url: 'https://www.rand.org/pubs/research_reports/RRA248-2.html' },
+      { label: 'Cases ~37× Higher Than Reported in China', url: 'https://www.rand.org/pubs/research_reports/RRA248-3.html' },
+      { label: 'Travel Restrictions by Per-Capita Infection & Air Traffic', url: 'https://www.rand.org/pubs/research_reports/RRA248-4.html' },
+      { label: 'Transmission Risk to GCC Countries', url: 'https://www.rand.org/pubs/research_reports/RRA248-5.html' },
+      { label: 'Worldwide Spread Accelerated Feb 19, 2020', url: 'https://www.rand.org/pubs/research_reports/RRA248-6.html' },
+      { label: 'African Anchor States Face Higher Import Risk', url: 'https://www.rand.org/pubs/research_reports/RRA248-7.html' },
     ],
   },
   {
