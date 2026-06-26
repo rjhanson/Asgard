@@ -1,6 +1,8 @@
 // Single source of truth for site-wide content. Edit here, not in markup.
 export const site = {
   name: 'Russell Hanson',
+  /** Used to bold the author's own name in publication author lists. */
+  authorName: 'Russell Hanson',
   monogram: 'RJH',
   role: 'Research Software Engineer',
   tagline:
@@ -12,6 +14,6 @@ export const site = {
   },
   links: {
     github: 'https://github.com/rjhanson',
-    email: 'mailto:you@example.com', // TODO: real address
+    email: 'mailto:russelljhanson@gmail.com',
   },
 };

@@ -172,16 +172,42 @@ p.lead + p { color: var(--muted); margin-top: 1rem; max-width: 60ch; }
 
 .pub {
   display: grid; grid-template-columns: auto 1fr auto; gap: 1.1rem;
-  align-items: baseline; text-decoration: none; color: inherit;
-  padding: 1.05rem 0; border-bottom: 1px solid var(--line);
+  align-items: start; text-decoration: none; color: inherit;
+  padding: 1.3rem 0; border-bottom: 1px solid var(--line);
   transition: transform .15s;
 }
 .pub:hover { transform: translateX(3px); }
 .pub:hover .t { color: var(--plum); }
-.pub .idx { font-family: var(--mono); color: var(--plum); font-size: 0.8rem; }
-.pub .t { font-weight: 600; font-size: 1.05rem; transition: color .15s; }
-.pub .m { color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
-.pub .yr { font-family: var(--mono); color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.pub .idx { font-family: var(--mono); color: var(--plum); font-size: 0.8rem; padding-top: 0.2rem; }
+.pub .t { font-weight: 600; font-size: 1.05rem; line-height: 1.35; transition: color .15s; }
+.pub .authors { color: var(--ink); font-size: 0.85rem; margin-top: 0.35rem; }
+.pub .authors strong { color: var(--plum); font-weight: 700; }
+.pub .meta-line {
+  display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+.pub .venue { color: var(--muted); font-size: 0.85rem; font-style: italic; }
+.pub .type {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--plum);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 0.12rem 0.55rem; white-space: nowrap;
+}
+.pub .desc { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; max-width: 62ch; }
+.pub .yr { font-family: var(--mono); color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; padding-top: 0.2rem; }
+
+/* Series rows aren't a single link, so don't translate on hover. */
+.pub-series:hover { transform: none; }
+
+.pub .part-links {
+  list-style: none; margin: 0.7rem 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.pub .part-links a {
+  font-size: 0.88rem; color: var(--plum); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color .15s;
+}
+.pub .part-links a:hover { border-bottom-color: var(--plum); }
 
 footer {
   padding: 2.6rem 0 4.5rem; border-top: 1px solid var(--line);
