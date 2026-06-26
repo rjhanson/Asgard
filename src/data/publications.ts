@@ -33,6 +33,17 @@ export const typeLabels: Record<PublicationType, string> = {
 // Newest first. Add new entries anywhere — the list is sorted by year on render.
 export const publications: Publication[] = [
   {
+    title: 'A Guide to Effective Strategies for Supporting Expectant Transition-Age Foster Youth',
+    authors:
+      'Dana Schultz, Dionne Barnes-Proby, Ingrid Estrada-Darley, Yoselín Mayoral, Madison Williams, Russell Hanson, Aaron Kofner',
+    venue: 'RAND Corporation',
+    year: 2025,
+    type: 'report',
+    url: 'https://www.rand.org/pubs/tools/TLA3475-1.html',
+    description:
+      'A practitioner guide to evidence-based strategies for supporting pregnant and expectant youth aging out of the foster care system.',
+  },
+  {
     title: 'The Future of Indo-Pacific Information Warfare: Challenges and Prospects from the Rise of AI',
     authors: 'Russell Hanson, Adam R. Grissom, Christopher A. Mouton',
     venue: 'RAND Corporation',
@@ -121,7 +132,7 @@ export const publications: Publication[] = [
       { label: 'A New Tool for Analyzing Air Travel', url: 'https://doi.org/10.7249/RRA248-1' },
       { label: '1.5+ Daily Infected Passengers from China', url: 'https://doi.org/10.7249/RRA248-2' },
       { label: 'Cases ~37× Higher Than Reported', url: 'https://doi.org/10.7249/RRA248-3' },
-      { label: 'Transmission Risk to GCC Countries', url: 'https://www.rand.org/pubs/tools/TLA3475-1.html' },
+      { label: 'Transmission Risk to GCC Countries', url: 'https://doi.org/10.7249/RRA248-5' },
     ],
   },
   {
