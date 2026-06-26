@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import PublicationRow from '../components/PublicationRow.astro';
+import { site } from '../data/site';
+import { publications } from '../data/publications';
+---
+
+<Base>
+  <Hero />
+
+  <div class="wrap">
+    <section id="about">
+      <div class="label">About</div>
+      <p class="lead">{site.about.lead}</p>
+      <p>{site.about.detail}</p>
+    </section>
+
+    <section id="work">
+      <div class="label">Selected Publications</div>
+      {publications.map((pub, i) => <PublicationRow pub={pub} index={i} />)}
+    </section>
+
+    <footer id="contact">
+      <div>© 2026 {site.name}</div>
+      <div>
+        <a href={site.links.github}>github</a> ·
+        <a href={site.links.email}>email</a>
+      </div>
+    </footer>
+  </div>
+</Base>

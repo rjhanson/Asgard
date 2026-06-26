@@ -1,0 +1,20 @@
+---
+import type { Publication } from '../data/publications';
+
+interface Props {
+  pub: Publication;
+  index: number;
+}
+
+const { pub, index } = Astro.props;
+const idx = String(index + 1).padStart(2, '0');
+---
+
+<a class="pub" href={pub.url ?? '#'}>
+  <span class="idx">{idx}</span>
+  <div>
+    <div class="t">{pub.title}</div>
+    <div class="m">{pub.venue}</div>
+  </div>
+  <span class="yr">{pub.year}</span>
+</a>

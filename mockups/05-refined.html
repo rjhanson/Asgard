@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Russell Hanson</title>
+<style>
+  :root {
+    /* Dark hero */
+    --hero-bg:   #0b0a11;
+    --hero-glow: rgba(122, 93, 164, 0.20);
+    --hero-ink:  #ece9f3;
+    --hero-muted:#938db0;
+    --amber:     #e0ad5c;   /* the single warm pop — top only, used sparingly */
+
+    /* Light body (Observatory paper) */
+    --paper:   #f6f4f1;
+    --paper-2: #efece7;
+    --ink:     #1b1922;
+    --muted:   #6b6577;
+    --line:    #e3ded7;
+
+    /* Purple — amethyst in the dark hero, a deeper plum on the light body for contrast */
+    --amethyst: #9a7fc0;
+    --plum:     #6d4a87;
+    --plum-2:   #5a3a73;
+
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: 740px; margin: 0 auto; padding: 0 30px; }
+
+  /* ============ DARK STARRY HERO (full-bleed band) ============ */
+  .hero {
+    position: relative;
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    overflow: hidden;
+  }
+  /* soft nebula glow + sparse starfield, layered */
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(1200px 700px at 78% -10%, var(--hero-glow), transparent 60%),
+      radial-gradient(900px 520px at 12% 120%, rgba(90,58,115,0.18), transparent 60%);
+    z-index: 0;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1.2px 1.2px at 18% 24%, #fff, transparent),
+      radial-gradient(1px 1px at 58% 62%, #c9bfe4, transparent),
+      radial-gradient(1.4px 1.4px at 82% 20%, #fff, transparent),
+      radial-gradient(1px 1px at 38% 80%, #b3a6da, transparent),
+      radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+      radial-gradient(1px 1px at 28% 58%, #e9e3f7, transparent),
+      radial-gradient(1.3px 1.3px at 90% 72%, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 380px 380px;
+    opacity: 0.55;
+    z-index: 0;
+    /* fade the stars out toward the bottom so the transition to paper is soft */
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+
+  /* top strip: monogram + nav, with the lone amber pop */
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.6rem 0;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .dot { height: 9px; width: 9px; border-radius: 999px; background: var(--amber);
+         box-shadow: 0 0 10px rgba(224,173,92,0.6); }
+  .mark { font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.14em; color: var(--hero-muted); }
+  .mark b { color: var(--hero-ink); }
+  .topbar nav a {
+    font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em;
+    color: var(--hero-muted); text-decoration: none; margin-left: 1.4rem;
+  }
+  .topbar nav a:hover { color: var(--amethyst); }
+
+  .hero-body { padding: 4.5rem 0 6rem; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.76rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--amber);            /* amber pop, sparing */
+    margin-bottom: 1.3rem;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before {
+    content: ""; height: 1px; width: 26px; background: var(--amber); opacity: 0.7;
+  }
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(2.7rem, 7.5vw, 4.6rem);
+    font-weight: 700; letter-spacing: -0.025em; line-height: 1.02;
+  }
+  .tagline {
+    margin-top: 1.6rem; color: var(--hero-muted);
+    font-size: clamp(1.05rem, 2.3vw, 1.3rem); max-width: 54ch;
+  }
+  .cta { margin-top: 2.6rem; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.06em;
+    text-decoration: none; padding: 0.72rem 1.3rem; border-radius: 8px;
+    transition: all .15s ease;
+  }
+  .btn.primary { background: var(--amethyst); color: #14101c; font-weight: 600; }
+  .btn.primary:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  .btn.ghost { color: var(--hero-ink); border: 1px solid #2c2838; }
+  .btn.ghost:hover { border-color: var(--amethyst); transform: translateY(-2px); }
+
+  /* ============ LIGHT EDITORIAL BODY ============ */
+  section { padding: 3.4rem 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: none; }
+
+  /* the Bridge "cap": a purple bar before each section label */
+  .label {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono);
+    font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--plum); margin-bottom: 1.6rem;
+  }
+  .label::before {
+    content: ""; height: 13px; width: 46px;
+    background: var(--plum); border-radius: 999px;
+  }
+
+  p.lead { font-size: 1.12rem; max-width: 60ch; }
+  p.lead + p { color: var(--muted); margin-top: 1rem; max-width: 60ch; }
+
+  /* Publications — Observatory rows, mono index + year */
+  .pub {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 1.1rem;
+    align-items: baseline; text-decoration: none; color: inherit;
+    padding: 1.05rem 0; border-bottom: 1px solid var(--line);
+    transition: transform .15s;
+  }
+  .pub:hover { transform: translateX(3px); }
+  .pub:hover .t { color: var(--plum); }
+  .pub .idx { font-family: var(--mono); color: var(--plum); font-size: 0.8rem; }
+  .pub .t { font-weight: 600; font-size: 1.05rem; transition: color .15s; }
+  .pub .m { color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
+  .pub .yr { font-family: var(--mono); color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+
+  footer {
+    padding: 2.6rem 0 4.5rem; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 0.85rem; font-family: var(--mono);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--plum); }
+</style>
+</head>
+<body>
+
+  <!-- ===== Dark starry hero ===== -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <span class="dot"></span>
+          <span class="mark"><b>RJH</b></span>
+        </div>
+        <nav>
+          <a href="#work">Work</a>
+          <a href="https://github.com/rjhanson">GitHub</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="hero-body">
+        <div class="eyebrow">Research Software Engineer</div>
+        <h1>Russell Hanson</h1>
+        <p class="tagline">I build data pipelines, simulation models, and LLM-powered tools that turn hard research questions into defensible answers.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">Publications</a>
+          <a class="btn ghost" href="https://github.com/rjhanson" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Light editorial body ===== -->
+  <div class="wrap">
+    <section id="about">
+      <div class="label">About</div>
+      <p class="lead">A decade as the sole engineer on research projects — shipping the application, the model, or the pipeline that answers a specific question.</p>
+      <p>Python, FastAPI, React/TypeScript, Databricks, and Azure. Built for rigor, reproducibility, and clarity.</p>
+    </section>
+
+    <section id="work">
+      <div class="label">Selected Publications</div>
+      <a class="pub" href="#"><span class="idx">01</span><div><div class="t">Publication title goes here</div><div class="m">Journal / Venue</div></div><span class="yr">2024</span></a>
+      <a class="pub" href="#"><span class="idx">02</span><div><div class="t">Another publication title</div><div class="m">Journal / Venue</div></div><span class="yr">2022</span></a>
+      <a class="pub" href="#"><span class="idx">03</span><div><div class="t">A third, earlier piece of work</div><div class="m">Journal / Venue</div></div><span class="yr">2019</span></a>
+    </section>
+
+    <footer id="contact">
+      <div>© 2026 Russell Hanson</div>
+      <div>
+        <a href="https://github.com/rjhanson">github</a> ·
+        <a href="#">linkedin</a> ·
+        <a href="#">email</a>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
