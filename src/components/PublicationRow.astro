@@ -1,0 +1,50 @@
+---
+import type { Publication } from '../data/publications';
+import { typeLabels } from '../data/publications';
+import { site } from '../data/site';
+
+interface Props {
+  pub: Publication;
+  index: number;
+}
+
+const { pub, index } = Astro.props;
+const idx = String(index + 1).padStart(2, '0');
+
+// Bold the site author's name within the author list.
+const authorHtml = pub.authors.replaceAll(
+  site.authorName,
+  `<strong>${site.authorName}</strong>`,
+);
+
+const isSeries = Array.isArray(pub.links) && pub.links.length > 0;
+// Single-link rows are one big clickable anchor; series rows aren't (can't
+// nest the part links inside an outer anchor), so render a non-link wrapper.
+const Wrapper = isSeries ? 'div' : 'a';
+const wrapperProps = isSeries
+  ? { class: 'pub pub-series' }
+  : { class: 'pub', href: pub.url, target: '_blank', rel: 'noopener' };
+---
+
+<Wrapper {...wrapperProps}>
+  <span class="idx">{idx}</span>
+  <div class="pub-main">
+    <div class="t">{pub.title}</div>
+    <div class="authors" set:html={authorHtml} />
+    <div class="meta-line">
+      <span class="venue">{pub.venue}</span>
+      <span class="type">{typeLabels[pub.type]}</span>
+    </div>
+    {pub.description && <p class="desc">{pub.description}</p>}
+    {isSeries && (
+      <ul class="part-links">
+        {pub.links!.map((link) => (
+          <li>
+            <a href={link.url} target="_blank" rel="noopener">{link.label} ↗</a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+  <span class="yr">{pub.year}</span>
+</Wrapper>

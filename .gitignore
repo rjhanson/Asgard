@@ -1,2 +1,25 @@
-node_modules
-dist
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+
+# environment
+.env
+.env.production
+
+# terraform
+infra/.terraform/
+infra/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# macOS
+.DS_Store
+
+# logs
+npm-debug.log*

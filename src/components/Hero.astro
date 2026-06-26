@@ -1,0 +1,29 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="mark"><b>{site.monogram}</b></span>
+      </div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href={site.links.github}>GitHub</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="hero-body">
+      <div class="eyebrow">{site.role}</div>
+      <h1>{site.name}</h1>
+      <p class="tagline">{site.tagline}</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">Publications</a>
+        <a class="btn ghost" href={site.links.github} target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title={`Not found — ${site.name}`}>
+  <div class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <span class="dot"></span>
+          <span class="mark"><b>{site.monogram}</b></span>
+        </div>
+        <nav>
+          <a href="/">Home</a>
+          <a href={site.links.github}>GitHub</a>
+        </nav>
+      </div>
+      <div class="hero-body">
+        <div class="eyebrow">Error 404</div>
+        <h1>Lost in space</h1>
+        <p class="tagline">That page drifted out of orbit. Let's get you back.</p>
+        <div class="cta">
+          <a class="btn primary" href="/">Return home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
