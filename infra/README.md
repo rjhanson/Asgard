@@ -16,7 +16,30 @@ looked up as a data source, not created).
 - [Terraform](https://developer.hashicorp.com/terraform/install) >= 1.6 (`brew install terraform`)
 - AWS CLI configured with credentials that can manage S3/CloudFront/ACM/Route53
 
+## AWS credentials
+
+Do **not** use AWS root credentials or create root access keys. Set up a
+dedicated identity scoped to just what this project touches.
+
+Recommended: **IAM Identity Center (SSO)** with a custom permission set whose
+inline policy is [`iam-deploy-policy.json`](iam-deploy-policy.json) (least
+privilege — S3, CloudFront, ACM, Route53). After assigning yourself that
+permission set, configure the CLI:
+
+```bash
+aws configure sso              # enter your SSO start URL + region, name a profile
+export AWS_PROFILE=<profile>   # e.g. russell-site (Terraform and deploy.sh honor this)
+aws sts get-caller-identity    # confirm it works
+```
+
+SSO sessions expire; run `aws sso login` to re-authenticate when they do.
+
+(The same `iam-deploy-policy.json` works as an inline policy on a plain IAM
+user if you opt for long-lived access keys instead.)
+
 ## First-time setup
+
+With `AWS_PROFILE` exported (see above):
 
 ```bash
 cd infra
