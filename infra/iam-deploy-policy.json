@@ -95,17 +95,8 @@
       "Sid": "Budgets",
       "Effect": "Allow",
       "Action": [
-        "budgets:CreateBudget",
-        "budgets:ModifyBudget",
-        "budgets:DeleteBudget",
         "budgets:ViewBudget",
-        "budgets:DescribeBudget",
-        "budgets:CreateNotification",
-        "budgets:UpdateNotification",
-        "budgets:DeleteNotification",
-        "budgets:CreateSubscriber",
-        "budgets:UpdateSubscriber",
-        "budgets:DeleteSubscriber"
+        "budgets:ModifyBudget"
       ],
       "Resource": "*"
     },
