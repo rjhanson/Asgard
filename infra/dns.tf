@@ -44,9 +44,10 @@ resource "aws_acm_certificate_validation" "site" {
 # ---- Alias records pointing the domain at CloudFront ----
 # Apex (canonical) — A + AAAA.
 resource "aws_route53_record" "apex_a" {
-  zone_id = data.aws_route53_zone.primary.zone_id
-  name    = var.domain_name
-  type    = "A"
+  zone_id         = data.aws_route53_zone.primary.zone_id
+  name            = var.domain_name
+  type            = "A"
+  allow_overwrite = true # adopt any pre-existing record at this name
 
   alias {
     name                   = aws_cloudfront_distribution.site.domain_name
@@ -56,9 +57,10 @@ resource "aws_route53_record" "apex_a" {
 }
 
 resource "aws_route53_record" "apex_aaaa" {
-  zone_id = data.aws_route53_zone.primary.zone_id
-  name    = var.domain_name
-  type    = "AAAA"
+  zone_id         = data.aws_route53_zone.primary.zone_id
+  name            = var.domain_name
+  type            = "AAAA"
+  allow_overwrite = true
 
   alias {
     name                   = aws_cloudfront_distribution.site.domain_name
@@ -70,9 +72,10 @@ resource "aws_route53_record" "apex_aaaa" {
 # www — also aliased to the same distribution; the CloudFront Function
 # issues a 301 redirect from www to the apex.
 resource "aws_route53_record" "www_a" {
-  zone_id = data.aws_route53_zone.primary.zone_id
-  name    = "www.${var.domain_name}"
-  type    = "A"
+  zone_id         = data.aws_route53_zone.primary.zone_id
+  name            = "www.${var.domain_name}"
+  type            = "A"
+  allow_overwrite = true
 
   alias {
     name                   = aws_cloudfront_distribution.site.domain_name
@@ -82,9 +85,10 @@ resource "aws_route53_record" "www_a" {
 }
 
 resource "aws_route53_record" "www_aaaa" {
-  zone_id = data.aws_route53_zone.primary.zone_id
-  name    = "www.${var.domain_name}"
-  type    = "AAAA"
+  zone_id         = data.aws_route53_zone.primary.zone_id
+  name            = "www.${var.domain_name}"
+  type            = "AAAA"
+  allow_overwrite = true
 
   alias {
     name                   = aws_cloudfront_distribution.site.domain_name
