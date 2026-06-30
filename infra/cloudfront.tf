@@ -10,7 +10,9 @@ resource "aws_cloudfront_origin_access_control" "site" {
 # securityheaders.com. CSP is intentionally permissive enough for a static
 # site that loads only its own assets plus inline <style>.
 resource "aws_cloudfront_response_headers_policy" "security" {
-  name = "${var.domain_name}-security-headers"
+  # CloudFront policy names allow only alphanumerics, dashes, underscores —
+  # no dots, so the domain's dots are replaced.
+  name = "${replace(var.domain_name, ".", "-")}-security-headers"
 
   security_headers_config {
     strict_transport_security {
