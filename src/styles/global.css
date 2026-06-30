@@ -114,13 +114,20 @@ body {
   display: flex; justify-content: space-between; align-items: center;
   padding: 1.6rem 0;
 }
-.brand { display: flex; align-items: center; gap: 11px; }
+.brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .dot {
   height: 9px; width: 9px; border-radius: 999px; background: var(--amber);
   box-shadow: 0 0 10px rgba(230,178,95,0.7);
 }
+.star {
+  color: var(--amber); font-size: 1.15rem; line-height: 1;
+  text-shadow: 0 0 10px rgba(230,178,95,0.6);
+  transition: transform .2s ease;
+}
+.brand:hover .star { transform: rotate(72deg) scale(1.1); }
 .mark { font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.14em; color: var(--hero-muted); }
 .mark b { color: var(--hero-ink); }
+.brand:hover .mark b { color: var(--amber); }
 .topbar nav a {
   font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em;
   color: var(--hero-muted); text-decoration: none; margin-left: 1.4rem;

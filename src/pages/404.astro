@@ -7,10 +7,10 @@ import { site } from '../data/site';
   <div class="hero">
     <div class="wrap">
       <div class="topbar">
-        <div class="brand">
-          <span class="dot"></span>
+        <a class="brand" href="/" aria-label="Home">
+          <span class="star" aria-hidden="true">✦</span>
           <span class="mark"><b>{site.monogram}</b></span>
-        </div>
+        </a>
         <nav>
           <a href="/">Home</a>
           <a href={site.links.github}>GitHub</a>
