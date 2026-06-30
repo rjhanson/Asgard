@@ -13,10 +13,10 @@ node_modules/
 
 # terraform
 infra/.terraform/
-infra/.terraform.lock.hcl
 *.tfstate
 *.tfstate.*
 *.tfplan
+# note: infra/.terraform.lock.hcl IS committed (pins provider versions)
 
 # macOS
 .DS_Store
