@@ -51,6 +51,12 @@
         "cloudfront:TagResource",
         "cloudfront:UntagResource",
         "cloudfront:ListTagsForResource",
+        "cloudfront:CreateResponseHeadersPolicy",
+        "cloudfront:UpdateResponseHeadersPolicy",
+        "cloudfront:DeleteResponseHeadersPolicy",
+        "cloudfront:GetResponseHeadersPolicy",
+        "cloudfront:GetResponseHeadersPolicyConfig",
+        "cloudfront:ListResponseHeadersPolicies",
         "cloudfront:CreateOriginAccessControl",
         "cloudfront:UpdateOriginAccessControl",
         "cloudfront:DeleteOriginAccessControl",
@@ -82,6 +88,24 @@
         "acm:AddTagsToCertificate",
         "acm:RemoveTagsFromCertificate",
         "acm:GetCertificate"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "Budgets",
+      "Effect": "Allow",
+      "Action": [
+        "budgets:CreateBudget",
+        "budgets:ModifyBudget",
+        "budgets:DeleteBudget",
+        "budgets:ViewBudget",
+        "budgets:DescribeBudget",
+        "budgets:CreateNotification",
+        "budgets:UpdateNotification",
+        "budgets:DeleteNotification",
+        "budgets:CreateSubscriber",
+        "budgets:UpdateSubscriber",
+        "budgets:DeleteSubscriber"
       ],
       "Resource": "*"
     },

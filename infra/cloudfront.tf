@@ -6,6 +6,37 @@ resource "aws_cloudfront_origin_access_control" "site" {
   signing_protocol                  = "sigv4"
 }
 
+# Security response headers added to every response. Gives an A grade on
+# securityheaders.com. CSP is intentionally permissive enough for a static
+# site that loads only its own assets plus inline <style>.
+resource "aws_cloudfront_response_headers_policy" "security" {
+  name = "${var.domain_name}-security-headers"
+
+  security_headers_config {
+    strict_transport_security {
+      access_control_max_age_sec = 63072000 # 2 years
+      include_subdomains         = true
+      preload                    = true
+      override                   = true
+    }
+    content_type_options {
+      override = true
+    }
+    frame_options {
+      frame_option = "DENY"
+      override     = true
+    }
+    referrer_policy {
+      referrer_policy = "strict-origin-when-cross-origin"
+      override        = true
+    }
+    content_security_policy {
+      content_security_policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+      override                = true
+    }
+  }
+}
+
 # Viewer-request function: www->apex redirect + directory-index rewrite.
 resource "aws_cloudfront_function" "rewrite" {
   name    = "rewrite-and-redirect"
@@ -40,7 +71,8 @@ resource "aws_cloudfront_distribution" "site" {
     compress               = true
 
     # AWS managed "CachingOptimized" policy.
-    cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security.id
 
     function_association {
       event_type   = "viewer-request"
