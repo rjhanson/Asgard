@@ -21,5 +21,9 @@ infra/.terraform/
 # macOS
 .DS_Store
 
+# editors / IDEs
+.idea/
+.vscode/
+
 # logs
 npm-debug.log*
